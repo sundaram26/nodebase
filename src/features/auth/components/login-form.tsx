@@ -24,8 +24,7 @@ import {
   FormMessage
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-// import { authClient } from "@/lib/auth-client";
-import { cn } from "@/lib/utils";
+import { authClient } from "@/lib/auth-client";
 
 
 const loginSchema = z.object({
@@ -47,7 +46,18 @@ export function LoginForm() {
   });
   
   const onSubmit = async (values: LoginFormValues) => {
-    console.log(values);
+    await authClient.signIn.email({
+      email: values.email,
+      password: values.password,
+      callbackURL: "/",
+    }, {
+      onSuccess: () => {
+        router.push("/");
+      },
+      onError: ctx => {
+        toast.error(ctx.error.message);
+      }
+    })
   }
   
   const isPending = form.formState.isSubmitting;
@@ -67,6 +77,16 @@ export function LoginForm() {
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)}>
               <div className="grid gap-6">
+                <div className="flex flex-col gap-4">
+                  <Button
+                    variant="outline"
+                    className="w-full"
+                    type="button"
+                    disabled={isPending}
+                  >
+                    Continue with GitHub
+                  </Button>
+                </div>
                 <div className="flex flex-col gap-4">
                   <Button
                     variant="outline"
@@ -100,7 +120,7 @@ export function LoginForm() {
                     name="password"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Email</FormLabel>
+                        <FormLabel>Password</FormLabel>
                         <FormControl>
                           <Input 
                             type="password"
