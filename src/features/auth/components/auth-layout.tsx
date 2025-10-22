@@ -12,6 +12,7 @@ const AuthLayout = ({ children }: { children: React.ReactNode; }) => {
             width={30}
             height={30}
           />
+          Nodebase
         </Link>
         {children}
       </div>
