@@ -1,3 +1,4 @@
+import { inngest } from '@/inngest/client';
 import { createTRPCRouter, protectedProcedure } from '../init';
 import prisma from '@/lib/db';
 
@@ -7,13 +8,13 @@ export const appRouter = createTRPCRouter({
   }),
   createWorkflow: protectedProcedure.mutation(async () => {
     // fetch the video
-    await new Promise((resolve) => setTimeout(resolve, 5000));
-
-    return prisma.workflow.create({
+    await inngest.send({
+      name: "test/hello.world",
       data: {
-        name: "test-workflow"
+        email: "sundaram@gmail.com"
       }
     })
+    return { success: true, message: "Job queued"}
   })
 });
 
