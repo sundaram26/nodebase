@@ -18,6 +18,7 @@ const Page = () => {
     onSuccess: () => {
       toast.success("Job queued")
     }
+    
   }));
 
   return (
