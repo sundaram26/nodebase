@@ -12,6 +12,7 @@
     "dev:all": "mprocs"
   },
   "dependencies": {
+    "@ai-sdk/google": "^3.0.13",
     "@hookform/resolvers": "^5.2.2",
     "@prisma/client": "^6.17.1",
     "@radix-ui/react-accordion": "^1.2.12",
