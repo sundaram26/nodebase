@@ -172,9 +172,9 @@ export function RegisterForm() {
                   </Button>
                 </div>
                 <div className="text-center text-sm">
-                  Don't have an account?{" "}
+                  Already have an account?{" "}
                   <Link href="/login" className="underline underline-offset-4">
-                    Sign up
+                    Sign in
                   </Link>
                 </div>
               </div>
