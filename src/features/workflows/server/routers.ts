@@ -89,7 +89,7 @@ export const workflowsRouter = createTRPCRouter({
             const hasPreviousPage = page > 1;
 
             return {
-                item: items,
+                items: items,
                 page,
                 pageSize,
                 totalCount,
