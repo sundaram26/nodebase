@@ -59,3 +59,9 @@ called `Option::unwrap()` on a `None` value
 ERROR [lib::error] Error: channel closed
 ERROR [lib::error] Error: channel closed
 ERROR [lib::error] Error: channel closed
+ERROR [lib::app] TODO: Copy deps for duplicate proc.
+ERROR [lib::app] TODO: Copy deps for duplicate proc.
+ERROR [lib::app] TODO: Copy deps for duplicate proc.
+ERROR [lib::error] Error: channel closed
+ERROR [lib::error] Error: channel closed
+ERROR [lib::error] Error: channel closed
