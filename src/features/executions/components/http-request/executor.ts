@@ -32,38 +32,38 @@ export const httpRequestExecutor: NodeExecutor<HttpRequestData> = async ({
         })
     )
 
-    if (!data.endpoint) {
-        await publish(
-            httpRequestChannel().status({
-                nodeId,
-                status: "error"
-            })
-        )
-        throw new NonRetriableError("HTTP Request node: no endpoint configured")
-    }
-
-    if (!data.variableName) {
-        await publish(
-            httpRequestChannel().status({
-                nodeId,
-                status: "error"
-            })
-        )
-        throw new NonRetriableError("HTTP Request node: Variable name not configured")
-    }
-    
-    if (!data.method) {
-        await publish(
-            httpRequestChannel().status({
-                nodeId,
-                status: "error"
-            })
-        )
-        throw new NonRetriableError("HTTP Request node: Method not configured")
-    }
-
     try {
         const result = await step.run("http-request", async () => {
+            if (!data.endpoint) {
+                await publish(
+                    httpRequestChannel().status({
+                        nodeId,
+                        status: "error"
+                    })
+                )
+                throw new NonRetriableError("HTTP Request node: no endpoint configured")
+            }
+
+            if (!data.variableName) {
+                await publish(
+                    httpRequestChannel().status({
+                        nodeId,
+                        status: "error"
+                    })
+                )
+                throw new NonRetriableError("HTTP Request node: Variable name not configured")
+            }
+
+            if (!data.method) {
+                await publish(
+                    httpRequestChannel().status({
+                        nodeId,
+                        status: "error"
+                    })
+                )
+                throw new NonRetriableError("HTTP Request node: Method not configured")
+            }
+
             // http://example.com/{{todo.httpResponse.data.id}}
             const endpoint = Handlebars.compile(data.endpoint)(context);
             console.log("Making HTTP request to:", endpoint);
