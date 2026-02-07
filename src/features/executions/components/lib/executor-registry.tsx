@@ -16,6 +16,8 @@ export const executorRegistry: Record<NodeType, NodeExecutor> = {
     [NodeType.GEMINI]: geminiExecutor,
     [NodeType.ANTHROPIC]: anthropicExecutor,
     [NodeType.OPENAI]: geminiExecutor,
+    [NodeType.DISCORD]: geminiExecutor,
+    [NodeType.SLACK]: geminiExecutor,
 };
 
 export const getExecutor = (type: NodeType): NodeExecutor<any> => {
